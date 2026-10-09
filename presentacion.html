@@ -861,7 +861,7 @@
     <div class="nav-actions">
       <!-- SELECTOR DE TEMAS -->
       <button class="btn" id="themeBtn" title="Cambiar tema">Tema</button>
-      <button class="btn" id="fsBtn">Pantalla Completa</button>
+      <button class="btn" id="fsBtn" title="Pantalla Completa">⛶ Pantalla Completa</button>
     </div>
   </header>
 
@@ -1593,11 +1593,20 @@
     }
 
     // Pantalla Completa
-    document.getElementById('fsBtn').addEventListener('click', () => {
+    const fsBtn = document.getElementById('fsBtn');
+    fsBtn.addEventListener('click', () => {
       if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen().catch(() => {});
       } else {
         document.exitFullscreen().catch(() => {});
+      }
+    });
+
+    document.addEventListener('fullscreenchange', () => {
+      if (document.fullscreenElement) {
+        fsBtn.innerHTML = '⛶ Salir de Pantalla Completa';
+      } else {
+        fsBtn.innerHTML = '⛶ Pantalla Completa';
       }
     });
 
