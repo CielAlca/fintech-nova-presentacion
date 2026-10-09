@@ -6,13 +6,13 @@
   <title>FinTech Nova — Defensa Oral TP1 DevOps (Grupo 12)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #070a13;
-      --card-bg: rgba(14, 21, 37, 0.75);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --card-hover: rgba(56, 189, 248, 0.35);
+      --bg: #060913;
+      --card-bg: rgba(13, 20, 36, 0.78);
+      --card-border: rgba(255, 255, 255, 0.09);
+      --card-hover: rgba(56, 189, 248, 0.4);
       --primary: #38bdf8;
       --accent: #818cf8;
       --success: #34d399;
@@ -37,21 +37,21 @@
       display: flex;
       flex-direction: column;
       background-image: 
-        radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.12) 0%, transparent 45%),
-        radial-gradient(circle at 85% 85%, rgba(129, 140, 248, 0.12) 0%, transparent 45%),
-        radial-gradient(circle at 50% 50%, rgba(52, 211, 153, 0.04) 0%, transparent 60%);
+        radial-gradient(circle at 12% 15%, rgba(56, 189, 248, 0.15) 0%, transparent 45%),
+        radial-gradient(circle at 88% 85%, rgba(129, 140, 248, 0.15) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(52, 211, 153, 0.05) 0%, transparent 60%);
     }
 
     /* Top Bar */
     .top-bar {
-      height: 56px;
-      display: flex;
+      height: 60px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      justify-content: space-between;
       padding: 0 2rem;
       border-bottom: 1px solid var(--card-border);
-      background: rgba(7, 10, 19, 0.85);
-      backdrop-filter: blur(16px);
+      background: rgba(6, 9, 19, 0.9);
+      backdrop-filter: blur(20px);
       z-index: 100;
     }
 
@@ -59,23 +59,24 @@
       display: flex;
       align-items: center;
       gap: 0.85rem;
+      justify-self: start;
     }
 
     .brand-logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 9px;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
       background: linear-gradient(135deg, #0284c7, #6366f1);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.15rem;
-      box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+      font-size: 1.25rem;
+      box-shadow: 0 0 24px rgba(56, 189, 248, 0.45);
     }
 
     .brand-title {
       font-weight: 800;
-      font-size: 1.05rem;
+      font-size: 1.12rem;
       letter-spacing: -0.02em;
     }
 
@@ -84,41 +85,81 @@
       font-weight: 700;
       color: var(--text-muted);
       background: rgba(255, 255, 255, 0.05);
-      padding: 3px 9px;
+      padding: 3px 10px;
       border-radius: 99px;
       border: 1px solid var(--card-border);
+    }
+
+    /* PARTE SUPERIOR CENTRAL: FLECHITAS & CONTADOR */
+    .top-nav-center {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-self: center;
+      background: rgba(14, 21, 38, 0.8);
+      padding: 4px 8px;
+      border-radius: 99px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .nav-arrow-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .nav-arrow-btn:hover {
+      background: rgba(56, 189, 248, 0.25);
+      border-color: var(--primary);
+      transform: scale(1.08);
+      color: var(--primary);
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.4);
+    }
+
+    .nav-arrow-btn:active {
+      transform: scale(0.95);
+    }
+
+    .nav-slide-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--primary);
+      padding: 0 10px;
+      letter-spacing: 0.06em;
+      min-width: 82px;
+      text-align: center;
     }
 
     .nav-actions {
       display: flex;
       align-items: center;
       gap: 0.8rem;
-    }
-
-    .slide-badge {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.82rem;
-      font-weight: 700;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--card-border);
-      padding: 5px 14px;
-      border-radius: 99px;
-      color: var(--primary);
+      justify-self: end;
     }
 
     .btn {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--card-border);
       color: var(--text);
-      padding: 6px 14px;
-      border-radius: 8px;
+      padding: 7px 16px;
+      border-radius: 9px;
       cursor: pointer;
       font-weight: 600;
       font-size: 0.84rem;
       transition: all 0.2s ease;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 7px;
     }
 
     .btn:hover {
@@ -129,18 +170,19 @@
 
     .progress-bar-container {
       position: absolute;
-      top: 55px;
+      top: 59px;
       left: 0;
       width: 100%;
       height: 3px;
       background: rgba(255, 255, 255, 0.04);
+      z-index: 99;
     }
 
     .progress-bar-fill {
       height: 100%;
       background: linear-gradient(90deg, #38bdf8, #818cf8, #34d399);
       width: 0%;
-      transition: width 0.3s ease;
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     /* Viewport & Slide */
@@ -148,12 +190,13 @@
       flex: 1;
       position: relative;
       overflow: hidden;
+      margin-bottom: 58px; /* Espacio para el floating dock inferior */
     }
 
     .slide {
       position: absolute;
       inset: 0;
-      padding: 2.2rem 3.5rem;
+      padding: 2.5rem 4rem 2rem 4rem;
       display: flex;
       flex-direction: column;
       opacity: 0;
@@ -177,22 +220,22 @@
       background: rgba(56, 189, 248, 0.12);
       border: 1px solid rgba(56, 189, 248, 0.3);
       color: var(--primary);
-      padding: 5px 16px;
+      padding: 6px 18px;
       border-radius: 99px;
-      font-size: 0.84rem;
+      font-size: 0.86rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
       align-self: flex-start;
     }
 
     .headline {
-      font-size: 2.4rem;
+      font-size: clamp(2.3rem, 3.6vw, 3.2rem);
       font-weight: 900;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.035em;
       line-height: 1.15;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.8rem;
       background: linear-gradient(135deg, #ffffff 40%, #cbd5e1 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -201,26 +244,26 @@
     /* 2-Column Split Layout */
     .deck-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 2.2rem;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 2.8rem;
       flex: 1;
       align-items: center;
     }
 
-    /* 4 Cards Stack per Speaker */
+    /* Cards Stack */
     .cards-stack {
       display: flex;
       flex-direction: column;
-      gap: 0.95rem;
+      gap: 1.25rem;
     }
 
     .topic-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 1.05rem 1.25rem;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      border-radius: 16px;
+      padding: 1.35rem 1.6rem;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       transition: all 0.25s ease;
       position: relative;
       overflow: hidden;
@@ -232,74 +275,105 @@
       top: 0;
       left: 0;
       bottom: 0;
-      width: 4px;
+      width: 5px;
       background: var(--primary);
     }
 
     .topic-card:hover {
       transform: translateY(-2px);
       border-color: var(--card-hover);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
     }
 
     .card-title {
       font-weight: 800;
-      font-size: 1.08rem;
+      font-size: 1.28rem;
       color: #fff;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.3rem;
+      gap: 0.6rem;
+      margin-bottom: 0.55rem;
     }
 
     .card-desc {
-      font-size: 0.9rem;
+      font-size: 1rem;
       color: var(--text-muted);
-      line-height: 1.45;
+      line-height: 1.55;
     }
 
     .card-desc b {
-      color: #e2e8f0;
+      color: #f1f5f9;
     }
 
     .tag {
       font-family: 'JetBrains Mono', monospace;
       background: rgba(255, 255, 255, 0.08);
       color: var(--primary);
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 0.85em;
+      padding: 2px 7px;
+      border-radius: 5px;
+      font-size: 0.88em;
     }
 
-    /* Visual Browser Window */
+    /* Metrics Banner */
+    .metrics-banner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.9rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .metric-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 0.85rem;
+      text-align: center;
+    }
+
+    .metric-val {
+      font-size: 1.5rem;
+      font-weight: 900;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--primary);
+    }
+
+    .metric-lbl {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Visual Browser Window / Frame */
     .window-frame {
       background: #0b0f19;
       border: 1px solid var(--card-border);
-      border-radius: 16px;
+      border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.6);
       display: flex;
       flex-direction: column;
     }
 
     .window-header {
-      height: 38px;
+      height: 42px;
       background: rgba(255, 255, 255, 0.03);
       border-bottom: 1px solid var(--card-border);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 1rem;
+      padding: 0 1.2rem;
     }
 
     .window-dots {
       display: flex;
-      gap: 6px;
+      gap: 7px;
     }
 
     .dot {
-      width: 10px;
-      height: 10px;
+      width: 11px;
+      height: 11px;
       border-radius: 50%;
     }
     .dot-red { background: #ef4444; }
@@ -307,7 +381,7 @@
     .dot-green { background: #10b981; }
 
     .window-title {
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       font-weight: 600;
       color: var(--text-muted);
       font-family: 'JetBrains Mono', monospace;
@@ -316,7 +390,7 @@
     .window-content {
       position: relative;
       background: #000;
-      height: 390px;
+      height: 410px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -337,14 +411,14 @@
 
     .zoom-tooltip {
       position: absolute;
-      bottom: 10px;
-      right: 10px;
+      bottom: 12px;
+      right: 12px;
       background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 5px 12px;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 6px 14px;
       border-radius: 8px;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       font-weight: 600;
       color: #fff;
     }
@@ -353,8 +427,8 @@
       display: flex;
       background: rgba(255, 255, 255, 0.02);
       border-top: 1px solid var(--card-border);
-      padding: 6px 10px;
-      gap: 6px;
+      padding: 7px 12px;
+      gap: 8px;
       overflow-x: auto;
     }
 
@@ -362,28 +436,64 @@
       background: transparent;
       border: 1px solid transparent;
       color: var(--text-muted);
-      font-size: 0.76rem;
+      font-size: 0.78rem;
       font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 6px;
+      padding: 5px 12px;
+      border-radius: 7px;
       cursor: pointer;
       transition: all 0.2s;
       white-space: nowrap;
     }
 
-    .tab-btn.active {
-      background: rgba(56, 189, 248, 0.15);
-      color: var(--primary);
-      border-color: rgba(56, 189, 248, 0.3);
+    .tab-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.05);
     }
 
-    /* ==========================================================
-       SLIDE 1: PORTADA ESPECTACULAR
-       ========================================================== */
+    .tab-btn.active {
+      background: rgba(56, 189, 248, 0.16);
+      color: var(--primary);
+      border-color: rgba(56, 189, 248, 0.35);
+    }
+
+    /* CODE EDITOR MOCKUP FRAME (Para la parte de Claudia) */
+    .code-editor-box {
+      background: #080d1a;
+      border-radius: 14px;
+      height: 410px;
+      overflow-y: auto;
+      padding: 1.2rem 1.4rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: #e2e8f0;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .code-editor-box pre {
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    /* Colores de Sintaxis */
+    .kw { color: #f472b6; font-weight: 700; } /* Keyword */
+    .fn { color: #38bdf8; font-weight: 600; } /* Function / Command */
+    .str { color: #34d399; } /* String */
+    .cmt { color: #64748b; font-style: italic; } /* Comment */
+    .num { color: #fbbf24; } /* Number */
+    .hl-box {
+      background: rgba(56, 189, 248, 0.12);
+      border-left: 3px solid #38bdf8;
+      padding: 4px 8px;
+      margin: 6px 0;
+      border-radius: 0 6px 6px 0;
+    }
+
+    /* SLIDE 1: PORTADA ESPECTACULAR */
     .hero-center {
       margin: auto;
       text-align: center;
-      max-width: 980px;
+      max-width: 1040px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -394,116 +504,149 @@
       align-items: center;
       gap: 8px;
       background: linear-gradient(90deg, rgba(56, 189, 248, 0.15), rgba(129, 140, 248, 0.15));
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      padding: 6px 20px;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      padding: 7px 22px;
       border-radius: 99px;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 800;
       color: var(--primary);
-      margin-bottom: 1.4rem;
-      box-shadow: 0 0 25px rgba(56, 189, 248, 0.2);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 28px rgba(56, 189, 248, 0.25);
     }
 
     .hero-main-title {
-      font-size: 4.6rem;
+      font-size: clamp(3.5rem, 6vw, 5.2rem);
       font-weight: 900;
       letter-spacing: -0.04em;
       line-height: 1;
-      margin-bottom: 1.1rem;
+      margin-bottom: 1.2rem;
       background: linear-gradient(135deg, #ffffff 30%, #38bdf8 70%, #818cf8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hero-subtitle {
-      font-size: 1.25rem;
+      font-size: 1.28rem;
       color: var(--text-muted);
       font-weight: 500;
-      max-width: 800px;
-      line-height: 1.55;
-      margin-bottom: 2.5rem;
+      max-width: 860px;
+      line-height: 1.6;
+      margin-bottom: 2.8rem;
     }
 
     .team-cards-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 1.1rem;
+      gap: 1.2rem;
       width: 100%;
     }
 
     .team-card {
-      background: rgba(14, 21, 37, 0.8);
+      background: rgba(14, 21, 37, 0.85);
       border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 1.2rem 0.95rem;
+      border-radius: 16px;
+      padding: 1.35rem 1rem;
       text-align: center;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
       align-items: center;
+      cursor: pointer;
     }
 
     .team-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-5px);
       border-color: var(--primary);
-      box-shadow: 0 10px 25px rgba(56, 189, 248, 0.15);
+      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.2);
     }
 
     .avatar-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.05);
-      border: 2px solid;
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.25rem;
-      margin-bottom: 0.75rem;
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid;
     }
 
     .team-card h4 {
-      font-size: 1.05rem;
+      font-size: 1.15rem;
       font-weight: 800;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.35rem;
     }
 
     .team-card p {
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
-      line-height: 1.35;
+      line-height: 1.4;
     }
 
-    /* Metrics Grid Banner */
-    .metrics-banner {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      margin-bottom: 1.4rem;
+    /* FLOATING BOTTOM DOCK (Flechitas abajo adicionales y dots interactivos) */
+    .bottom-floating-dock {
+      position: fixed;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(14, 21, 38, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 6px 14px;
+      border-radius: 99px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      z-index: 100;
     }
 
-    .metric-box {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 0.85rem 1.1rem;
-      text-align: center;
+    .dock-arrow-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
 
-    .metric-val {
-      font-size: 1.8rem;
-      font-weight: 900;
+    .dock-arrow-btn:hover {
+      background: rgba(56, 189, 248, 0.3);
       color: var(--primary);
-      font-family: 'JetBrains Mono', monospace;
+      border-color: var(--primary);
+      transform: scale(1.1);
     }
 
-    .metric-lbl {
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-top: 2px;
+    .dock-pills {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dock-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .dock-dot:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .dock-dot.active {
+      width: 26px;
+      background: linear-gradient(90deg, #38bdf8, #818cf8);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
     }
 
     /* Modal Lightbox */
@@ -511,60 +654,87 @@
       position: fixed;
       inset: 0;
       background: rgba(0, 0, 0, 0.92);
-      backdrop-filter: blur(14px);
-      display: none;
+      backdrop-filter: blur(12px);
+      z-index: 999;
+      display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 1000;
       padding: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
     }
 
-    .modal.open { display: flex; }
+    .modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
 
     .modal img {
-      max-width: 95%;
+      max-width: 94%;
       max-height: 90vh;
-      border-radius: 10px;
-      box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+      border-radius: 12px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
       border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .modal-close {
       position: absolute;
-      top: 20px;
-      right: 25px;
+      top: 24px;
+      right: 28px;
       background: rgba(255, 255, 255, 0.1);
-      border: none;
+      border: 1px solid rgba(255, 255, 255, 0.2);
       color: #fff;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       width: 44px;
       height: 44px;
       border-radius: 50%;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .modal-close:hover {
+      background: #ef4444;
+      transform: scale(1.1);
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Bar -->
+  <!-- Top Bar con Flechitas al Centro -->
   <header class="top-bar">
     <div class="brand">
       <div class="brand-logo">🐳</div>
-      <div class="brand-title">FinTech Nova</div>
-      <span class="brand-tag">UTN FRC • Grupo 12</span>
+      <div>
+        <div class="brand-title">FinTech Nova</div>
+        <div style="font-size: 0.72rem; color: var(--text-muted);">Defensa Oral TP1 • UTN FRC</div>
+      </div>
     </div>
+
+    <!-- PARTE SUPERIOR CENTRAL: FLECHITAS DE NAVEGACIÓN -->
+    <div class="top-nav-center">
+      <button class="nav-arrow-btn" id="prevBtn" title="Anterior (←)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <div class="nav-slide-badge" id="slideIndicator">01 / 13</div>
+      <button class="nav-arrow-btn" id="nextBtn" title="Siguiente (→)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+
     <div class="nav-actions">
-      <span class="slide-badge" id="slideIndicator">SLIDE 1 / 8</span>
-      <button class="btn" id="prevBtn">← Anterior</button>
-      <button class="btn" id="nextBtn">Siguiente →</button>
       <button class="btn" id="fsBtn">⛶ Pantalla Completa</button>
     </div>
   </header>
+
   <div class="progress-bar-container">
     <div class="progress-bar-fill" id="progressFill"></div>
   </div>
 
-  <!-- Main Viewport -->
+  <!-- Viewport Principal de Slides -->
   <main class="viewport">
 
     <!-- ==========================================
@@ -575,31 +745,31 @@
         <div class="hero-prebadge">☁️ DEVOPS TP1 • CLOUD & MICROSERVICES 2026</div>
         <h1 class="hero-main-title">FinTech Nova</h1>
         <p class="hero-subtitle">
-          Arquitectura de Microservicios Políglota en AWS EC2, Ingress NGINX con TLS, Docker Bridge y Despliegue Automatizado
+          Arquitectura de Microservicios Políglota en AWS EC2, Edge Ingress NGINX con TLS, Docker Bridge y Despliegue Automatizado
         </p>
 
         <div class="team-cards-grid">
-          <div class="team-card" style="border-top: 3px solid #38bdf8;">
+          <div class="team-card" style="border-top: 3px solid #38bdf8;" onclick="goToSlide(3)">
             <div class="avatar-icon" style="border-color: #38bdf8; color: #38bdf8;">⚡</div>
             <h4>Daniel</h4>
             <p>AWS, Security Group, Deploy & Go</p>
           </div>
-          <div class="team-card" style="border-top: 3px solid #818cf8;">
+          <div class="team-card" style="border-top: 3px solid #818cf8;" onclick="goToSlide(5)">
             <div class="avatar-icon" style="border-color: #818cf8; color: #818cf8;">🚪</div>
             <h4>Nico</h4>
             <p>NGINX Ingress, TLS & Admin Panel</p>
           </div>
-          <div class="team-card" style="border-top: 3px solid #34d399;">
+          <div class="team-card" style="border-top: 3px solid #34d399;" onclick="goToSlide(7)">
             <div class="avatar-icon" style="border-color: #34d399; color: #34d399;">🐳</div>
             <h4>Lucas</h4>
             <p>Red Docker, MariaDB & .NET 8</p>
           </div>
-          <div class="team-card" style="border-top: 3px solid #f472b6;">
+          <div class="team-card" style="border-top: 3px solid #f472b6;" onclick="goToSlide(9)">
             <div class="avatar-icon" style="border-color: #f472b6; color: #f472b6;">🐍</div>
             <h4>Claudia</h4>
             <p>Clientes, Pagos & Resiliencia</p>
           </div>
-          <div class="team-card" style="border-top: 3px solid #fbbf24;">
+          <div class="team-card" style="border-top: 3px solid #fbbf24;" onclick="goToSlide(11)">
             <div class="avatar-icon" style="border-color: #fbbf24; color: #fbbf24;">☕</div>
             <h4>Julián</h4>
             <p>Facturas (Java), Secretos & Cierre</p>
@@ -637,13 +807,13 @@
           <div class="topic-card">
             <div class="card-title">🚪 Edge Gateway con Contenedor 'web'</div>
             <div class="card-desc">
-              Solo NGINX publica el puerto <b>443:443</b> hacia el host. Ningún microservicio interno expone puertos directamente a internet.
+              Solo NGINX publica el puerto <b>443:443</b> hacia el host. Ningún microservicio interno expone puertos directamente a internet, blindando todo el backend.
             </div>
           </div>
           <div class="topic-card">
             <div class="card-title">🔒 Terminación TLS en el Borde</div>
             <div class="card-desc">
-              El tráfico viaja cifrado por HTTPS desde internet hasta NGINX. Adentro de la red virtual <span class="tag">fintech-net</span> viaja por <b>HTTP plano</b> para optimizar el rendimiento.
+              El tráfico viaja cifrado por HTTPS desde internet hasta NGINX. Adentro de la red virtual <span class="tag">fintech-net</span> viaja por <b>HTTP plano</b> para maximizar el rendimiento.
             </div>
           </div>
         </div>
@@ -661,38 +831,26 @@
     </section>
 
     <!-- ==========================================
-         SLIDE 3: DISERTANTE 1 - DANIEL DRAGÚN
+         SLIDE 3: DANIEL - AWS & SECURITY GROUP
          ========================================== -->
     <section class="slide" data-slide="3">
-      <span class="speaker-chip">👤 1. DANIEL DRAGÚN</span>
-      <h2 class="headline">Infraestructura AWS, Despliegue y api-transacciones</h2>
+      <span class="speaker-chip">👤 1. DANIEL DRAGÚN • AWS & SEGURIDAD</span>
+      <h2 class="headline">Infraestructura AWS y Reglas de Security Group</h2>
       <div class="deck-grid">
         <div class="cards-stack">
           <div class="topic-card" style="border-left-color: #38bdf8;">
-            <div class="card-title">☁️ Infraestructura AWS</div>
+            <div class="card-title">☁️ Infraestructura AWS (t3.small)</div>
             <div class="card-desc">
-              AMI <b>Ubuntu Server 26.04 x86_64</b> e instancia <b>t3.small</b> (2 vCPUs y 2 GiB de RAM) con asignación automática de IP pública.
+              AMI oficial <b>Ubuntu Server 26.04 x86_64</b> en instancia <b>t3.small</b> con <b>2 vCPUs y 2 GiB de memoria RAM</b>. Aprovisionamiento ágil en la nube con IP pública asignada automáticamente.
             </div>
           </div>
           <div class="topic-card" style="border-left-color: #38bdf8;">
-            <div class="card-title">🛡️ Reglas del Security Group</div>
+            <div class="card-title">🛡️ Reglas Estrictas del Security Group</div>
             <div class="card-desc">
-              • Inbound <b>22 (SSH)</b> acotado con <span class="tag">/32</span> a la IP del admin <span class="tag">190.231.148.10</span>.<br>
-              • Inbound <b>443 (HTTPS)</b> abierto a <span class="tag">0.0.0.0/0</span>.<br>
-              • <b>Puerto 80 cerrado</b> sin excepciones (ni para redirigir).<br>
-              • Outbound abierto a todo el tráfico.
-            </div>
-          </div>
-          <div class="topic-card" style="border-left-color: #38bdf8;">
-            <div class="card-title">🚀 Automatización de Despliegue (deploy.ps1 / deploy.sh)</div>
-            <div class="card-desc">
-              Flujo en 5 fases: conexión SSH → instalación remota de Docker → transferencia segura por SCP de <span class="tag">.env</span> y SQL → <span class="tag">docker compose pull</span> y <span class="tag">up -d</span> → <b>Smoke tests</b> con curl a los 7 endpoints (200 OK).
-            </div>
-          </div>
-          <div class="topic-card" style="border-left-color: #38bdf8;">
-            <div class="card-title">⚡ Microservicio api-transacciones (Go 1.22)</div>
-            <div class="card-desc">
-              Binario estático ultra ligero con <span class="tag">CGO_ENABLED=0</span> (&lt; 20 MB). Enriquecimiento con API externa de GeoIP (<span class="tag">ipapi.co</span>) e instalación obligatoria de <b>ca-certificates</b> en Alpine.
+              • <b>Inbound 22 (SSH):</b> Acotado con <span class="tag">/32</span> a la IP fija del admin <span class="tag">190.231.148.10/32</span> evitando escaneos masivos.<br>
+              • <b>Inbound 443 (HTTPS):</b> Abierto a <span class="tag">0.0.0.0/0</span> para tráfico web seguro.<br>
+              • <b>Puerto 80 cerrado:</b> Sin excepciones, forzando conexión TLS directa.<br>
+              • <b>Outbound:</b> Abierto para actualización de paquetes y consultas DNS.
             </div>
           </div>
         </div>
@@ -707,224 +865,403 @@
           </div>
           <div class="window-tabs">
             <button class="tab-btn active" onclick="setTab('s3', './imagenes-evidencia/03_aws_security_group_inbound_outbound.png', 'Security Group Inbound/Outbound', this)">Security Group</button>
-            <button class="tab-btn" onclick="setTab('s3', './imagenes-evidencia/04_deploy_ps1_transferencia_pull.png', 'Script deploy.ps1 en Ejecución', this)">Deploy Script</button>
-            <button class="tab-btn" onclick="setTab('s3', './imagenes-evidencia/11_abm_transacciones_go_network_201.png', 'api-transacciones Go 201 Created', this)">Go Transacciones</button>
+            <button class="tab-btn" onclick="setTab('s3', './imagenes-evidencia/01_ec2_dashboard_instancia_corriendo.png', 'EC2 Dashboard en Running', this)">EC2 Dashboard</button>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ==========================================
-         SLIDE 4: DISERTANTE 2 - NICO LÓPEZ
+         SLIDE 4: DANIEL - DESPLIEGUE & GO
          ========================================== -->
     <section class="slide" data-slide="4">
-      <span class="speaker-chip">👤 2. NICO LÓPEZ</span>
-      <h2 class="headline">Gateway Ingress, TLS, NGINX y admin-panel</h2>
+      <span class="speaker-chip">👤 1. DANIEL DRAGÚN • AUTOMATIZACIÓN & GO</span>
+      <h2 class="headline">Despliegue Automatizado y api-transacciones (Go)</h2>
+      <div class="deck-grid">
+        <div class="cards-stack">
+          <div class="topic-card" style="border-left-color: #38bdf8;">
+            <div class="card-title">🚀 Automatización de Despliegue en 5 Fases</div>
+            <div class="card-desc">
+              Scripts <span class="tag">deploy.ps1</span> y <span class="tag">deploy.sh</span> para ejecución desatendida:<br>
+              1. Conexión SSH → 2. Instalación de Docker remoto → 3. Transferencia segura por SCP de <span class="tag">.env</span> y scripts SQL → 4. <span class="tag">docker compose pull</span> y <span class="tag">up -d</span> → 5. <b>Smoke tests automatizados con curl a 7 endpoints</b>.
+            </div>
+          </div>
+          <div class="topic-card" style="border-left-color: #38bdf8;">
+            <div class="card-title">⚡ Microservicio api-transacciones (Go 1.22)</div>
+            <div class="card-desc">
+              Binario compilado de forma estática con <span class="tag">CGO_ENABLED=0</span> resultando en una imagen ultra liviana (&lt; 20 MB). Enriquecimiento con API externa de GeoIP (<span class="tag">ipapi.co</span>) con instalación obligatoria de <b>ca-certificates</b> en Alpine para llamadas HTTPS salientes.
+            </div>
+          </div>
+        </div>
+        <div class="window-frame">
+          <div class="window-header">
+            <div class="window-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
+            <div class="window-title" id="t-s4">Script deploy.ps1 • Transferencia y Compose Pull</div>
+          </div>
+          <div class="window-content" onclick="zoomImg(this)">
+            <img id="img-s4" src="./imagenes-evidencia/04_deploy_ps1_transferencia_pull.png" alt="Deploy Script">
+            <span class="zoom-tooltip">🔍 Clic para ampliar</span>
+          </div>
+          <div class="window-tabs">
+            <button class="tab-btn active" onclick="setTab('s4', './imagenes-evidencia/04_deploy_ps1_transferencia_pull.png', 'Script deploy.ps1 en Ejecución', this)">Deploy Script</button>
+            <button class="tab-btn" onclick="setTab('s4', './imagenes-evidencia/11_abm_transacciones_go_network_201.png', 'api-transacciones Go 201 Created', this)">Go Transacciones 201</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 5: NICO - INGRESS & TLS
+         ========================================== -->
+    <section class="slide" data-slide="5">
+      <span class="speaker-chip">👤 2. NICO LÓPEZ • INGRESS & TLS</span>
+      <h2 class="headline">Gateway Ingress y Terminación TLS en el Borde</h2>
       <div class="deck-grid">
         <div class="cards-stack">
           <div class="topic-card" style="border-left-color: #818cf8;">
             <div class="card-title">🚪 Gateway Ingress web (NGINX)</div>
             <div class="card-desc">
-              Único punto de entrada público con mapeo de puertos del host <b>443:443</b>. Garantiza el aislamiento total de las APIs internas.
+              Único contenedor que expone puertos al host mediante el mapeo <b>443:443</b>. Actúa como Reverse Proxy y escudo perimetral, impidiendo cualquier conexión directa de internet hacia los microservicios backend o la base de datos.
             </div>
           </div>
           <div class="topic-card" style="border-left-color: #818cf8;">
             <div class="card-title">🔒 Terminación TLS en el Borde</div>
             <div class="card-desc">
-              Cifrado HTTPS con <span class="tag">server.crt</span> y <span class="tag">server.key</span> generados en memoria al arrancar la EC2. Tráfico interno en <b>HTTP plano</b> por rendimiento. Alerta esperada de certificado autofirmado validada por la cátedra.
+              Cifrado HTTPS estricto con <span class="tag">server.crt</span> y <span class="tag">server.key</span> generados en memoria al bootear la instancia. Tráfico interno en <b>HTTP plano</b> para ahorrar ciclos de CPU. Alerta esperada de certificado autofirmado validada por la cátedra.
             </div>
           </div>
+        </div>
+        <div class="window-frame">
+          <div class="window-header">
+            <div class="window-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
+            <div class="window-title" id="t-s5">NGINX Ingress • Puerto 443 y Cabecera Server</div>
+          </div>
+          <div class="window-content" onclick="zoomImg(this)">
+            <img id="img-s5" src="./imagenes-evidencia/15_nginx_ingress_puerto_443_tls_header.png" alt="NGINX Puerto 443">
+            <span class="zoom-tooltip">🔍 Clic para ampliar</span>
+          </div>
+          <div class="window-tabs">
+            <button class="tab-btn active" onclick="setTab('s5', './imagenes-evidencia/15_nginx_ingress_puerto_443_tls_header.png', 'NGINX Puerto 443 y Cabecera Server', this)">NGINX 443</button>
+            <button class="tab-btn" onclick="setTab('s5', './imagenes-evidencia/14_tls_alerta_certificado_autofirmado.png', 'Alerta esperada de TLS autofirmado', this)">Alerta TLS</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 6: NICO - NGINX CONFIG & ADMIN PANEL
+         ========================================== -->
+    <section class="slide" data-slide="6">
+      <span class="speaker-chip">👤 2. NICO LÓPEZ • CONFIGURACIÓN & 7º SERVICIO</span>
+      <h2 class="headline">Configuración de NGINX y 7º Microservicio admin-panel</h2>
+      <div class="deck-grid">
+        <div class="cards-stack">
           <div class="topic-card" style="border-left-color: #818cf8;">
-            <div class="card-title">🧭 Configuración de NGINX (nginx.conf)</div>
+            <div class="card-title">🧭 Hardening y Resiliencia en NGINX</div>
             <div class="card-desc">
-              • Directiva <span class="tag">resolver 127.0.0.11 valid=30s</span> con variable dinámica <span class="tag">$upstream</span> (evita caídas si una API tarda en iniciar).<br>
-              • <span class="tag">server_tokens off;</span> para hardening.<br>
-              • Directivas <span class="tag">rewrite</span> para entregar rutas limpias a las APIs.
+              • Directiva <span class="tag">resolver 127.0.0.11 valid=30s</span> con variable dinámica <span class="tag">$upstream</span>: obliga a NGINX a consultar el DNS de Docker y evita caídas si una API tarda en iniciar.<br>
+              • <span class="tag">server_tokens off;</span> para ocultar versiones ante escaneos maliciosos.<br>
+              • Directivas <span class="tag">rewrite</span> para entregar rutas limpias a las APIs internas.
             </div>
           </div>
           <div class="topic-card" style="border-left-color: #818cf8;">
             <div class="card-title">📊 7º Microservicio: admin-panel (Web2)</div>
             <div class="card-desc">
-              Requisito especial de grupo de 5 integrantes. Muestra topología de red en tiempo real, nómina y estado de salud. Corre en <b>puerto 80 interno</b> dentro de <span class="tag">fintech-net</span> sin exponerse al host.
+              Requisito especial de grupo de 5 integrantes. Desarrollado con Vite, muestra topología de red interactiva en tiempo real y nómina de integrantes. Corre en el <b>puerto 80 interno</b> dentro de <span class="tag">fintech-net</span> sin exponerse al host.
             </div>
           </div>
         </div>
         <div class="window-frame">
           <div class="window-header">
             <div class="window-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-            <div class="window-title" id="t-s4">NGINX Ingress • Puerto 443 y Cabecera Server</div>
+            <div class="window-title" id="t-s6">admin-panel • Topología Interactiva HTTPS</div>
           </div>
           <div class="window-content" onclick="zoomImg(this)">
-            <img id="img-s4" src="./imagenes-evidencia/15_nginx_ingress_puerto_443_tls_header.png" alt="NGINX Puerto 443">
+            <img id="img-s6" src="./imagenes-evidencia/13_admin_panel_topologia_https.png" alt="Admin Panel">
             <span class="zoom-tooltip">🔍 Clic para ampliar</span>
-          </div>
-          <div class="window-tabs">
-            <button class="tab-btn active" onclick="setTab('s4', './imagenes-evidencia/15_nginx_ingress_puerto_443_tls_header.png', 'NGINX Puerto 443 y Cabecera Server', this)">NGINX 443</button>
-            <button class="tab-btn" onclick="setTab('s4', './imagenes-evidencia/14_tls_alerta_certificado_autofirmado.png', 'Alerta esperada de TLS autofirmado', this)">Alerta TLS</button>
-            <button class="tab-btn" onclick="setTab('s4', './imagenes-evidencia/13_admin_panel_topologia_https.png', 'admin-panel Topología Interactiva', this)">Admin Panel</button>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ==========================================
-         SLIDE 5: DISERTANTE 3 - LUCAS GASTIABURÚ
+         SLIDE 7: LUCAS - RED & BASE DE DATOS
          ========================================== -->
-    <section class="slide" data-slide="5">
-      <span class="speaker-chip">👤 3. LUCAS GASTIABURÚ</span>
-      <h2 class="headline">Red fintech-net, MariaDB 11.8 y api-tarjetas</h2>
+    <section class="slide" data-slide="7">
+      <span class="speaker-chip">👤 3. LUCAS GASTIABURÚ • RED & DATOS</span>
+      <h2 class="headline">Red fintech-net y Persistencia en MariaDB 11.8</h2>
       <div class="deck-grid">
         <div class="cards-stack">
           <div class="topic-card" style="border-left-color: #34d399;">
             <div class="card-title">🐳 Red Compartida Docker (fintech-net)</div>
             <div class="card-desc">
-              Creación de red bridge <span class="tag">fintech-net</span> con subred <span class="tag">172.18.0.0/16</span>. Resolución automática de nombres por <b>DNS interno de Docker (127.0.0.11:53)</b> sin usar IPs fijas.
+              Red bridge privada con subred <span class="tag">172.18.0.0/16</span>. Resolución automática de nombres por el <b>DNS interno de Docker (127.0.0.11:53)</b>, permitiendo que los servicios se comuniquen por nombre de contenedor sin IPs rígidas.
             </div>
           </div>
           <div class="topic-card" style="border-left-color: #34d399;">
-            <div class="card-title">🗄️ Base de Datos MariaDB 11.8 (Aislamiento Lógico)</div>
+            <div class="card-title">🗄️ MariaDB con 5 Esquemas & Volúmenes</div>
             <div class="card-desc">
-              1 sola instancia de motor con <b>5 esquemas lógicos independientes</b> (<span class="tag">db_clientes</span>, <span class="tag">db_tarjetas</span>, etc.), en lugar de 5 motores separados para no agotar la RAM de la <span class="tag">t3.small</span>.
-            </div>
-          </div>
-          <div class="topic-card" style="border-left-color: #34d399;">
-            <div class="card-title">💾 Persistencia y Volúmenes</div>
-            <div class="card-desc">
-              • <b>Named Volume (db_data):</b> En <span class="tag">/var/lib/mysql</span> para datos permanentes.<br>
-              • <b>Bind Mount (:ro):</b> De <span class="tag">./init-scripts</span> en solo lectura para scripts SQL iniciales.
-            </div>
-          </div>
-          <div class="topic-card" style="border-left-color: #34d399;">
-            <div class="card-title">💳 Microservicio api-tarjetas (.NET 8 Minimal API)</div>
-            <div class="card-desc">
-              C# asíncrono con <span class="tag">MySqlConnector</span>. Multi-stage: SDK de compilación descartado → Runtime <span class="tag">aspnet:8.0-alpine</span> (~110 MB) con usuario no-root <b>app</b>.
+              • <b>1 Solo Motor:</b> 5 esquemas lógicos (<span class="tag">db_clientes</span>, <span class="tag">db_tarjetas</span>, etc.) para no agotar la RAM de la <span class="tag">t3.small</span>.<br>
+              • <b>Named Volume (db_data):</b> Montado en <span class="tag">/var/lib/mysql</span> para datos permanentes.<br>
+              • <b>Bind Mount (:ro):</b> De <span class="tag">./init-scripts</span> en solo lectura para inicialización SQL.
             </div>
           </div>
         </div>
         <div class="window-frame">
           <div class="window-header">
             <div class="window-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-            <div class="window-title" id="t-s5">Docker Network • Inspección de IPs fintech-net</div>
+            <div class="window-title" id="t-s7">Docker Network • Inspección de IPs fintech-net</div>
           </div>
           <div class="window-content" onclick="zoomImg(this)">
-            <img id="img-s5" src="./imagenes-evidencia/06_docker_network_fintech_net_ips.png" alt="Docker Network">
+            <img id="img-s7" src="./imagenes-evidencia/06_docker_network_fintech_net_ips.png" alt="Docker Network">
             <span class="zoom-tooltip">🔍 Clic para ampliar</span>
-          </div>
-          <div class="window-tabs">
-            <button class="tab-btn active" onclick="setTab('s5', './imagenes-evidencia/06_docker_network_fintech_net_ips.png', 'Docker Network fintech-net con los 8 contenedores', this)">Red Docker</button>
-            <button class="tab-btn" onclick="setTab('s5', './imagenes-evidencia/12_abm_tarjetas_dotnet_network_201.png', 'api-tarjetas .NET 201 Created', this)">.NET Tarjetas</button>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ==========================================
-         SLIDE 6: DISERTANTE 4 - CLAUDIA ALCA
+         SLIDE 8: LUCAS - API-TARJETAS (.NET 8)
          ========================================== -->
-    <section class="slide" data-slide="6">
-      <span class="speaker-chip">👤 4. CLAUDIA ALCA</span>
-      <h2 class="headline">api-clientes, Healthchecks, api-pagos y Resiliencia</h2>
+    <section class="slide" data-slide="8">
+      <span class="speaker-chip">👤 3. LUCAS GASTIABURÚ • .NET 8 & MULTI-STAGE</span>
+      <h2 class="headline">Microservicio api-tarjetas en .NET 8 Minimal API</h2>
+      <div class="deck-grid">
+        <div class="cards-stack">
+          <div class="topic-card" style="border-left-color: #34d399;">
+            <div class="card-title">💳 .NET 8 Minimal API & MySqlConnector</div>
+            <div class="card-desc">
+              Desarrollado en C# con arquitectura minimalista y asíncrona de alto desempeño. Conexión eficiente a la base de datos mediante <span class="tag">MySqlConnector</span> sin sobrecarga de ORMs pesados.
+            </div>
+          </div>
+          <div class="topic-card" style="border-left-color: #34d399;">
+            <div class="card-title">🏗️ Multi-Stage Build & Hardening</div>
+            <div class="card-desc">
+              SDK completo de compilación (~750 MB) descartado; la imagen final corre sobre <span class="tag">aspnet:8.0-alpine</span> reduciendo el tamaño a ~110 MB y ejecutándose bajo el usuario no root <b>app</b>.
+            </div>
+          </div>
+        </div>
+        <div class="window-frame">
+          <div class="window-header">
+            <div class="window-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
+            <div class="window-title" id="t-s8">api-tarjetas .NET • Network 201 Created</div>
+          </div>
+          <div class="window-content" onclick="zoomImg(this)">
+            <img id="img-s8" src="./imagenes-evidencia/12_abm_tarjetas_dotnet_network_201.png" alt=".NET Tarjetas">
+            <span class="zoom-tooltip">🔍 Clic para ampliar</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 9: CLAUDIA - API-CLIENTES & HEALTHCHECKS
+         ========================================== -->
+    <section class="slide" data-slide="9">
+      <span class="speaker-chip">👤 4. CLAUDIA ALCA • PYTHON, SEGURIDAD & SALUD</span>
+      <h2 class="headline">api-clientes en Flask y Healthchecks Nativos</h2>
       <div class="deck-grid">
         <div class="cards-stack">
           <div class="topic-card" style="border-left-color: #f472b6;">
             <div class="card-title">🐍 Microservicio api-clientes (Python 3.11 / Flask)</div>
             <div class="card-desc">
-              Aislamiento en entorno virtual <span class="tag">/opt/venv</span>, usuario no-root <b>appuser (UID 1000)</b> contra escape de contenedor, y variables de entorno <span class="tag">PYTHONDONTWRITEBYTECODE=1</span> y <span class="tag">PYTHONUNBUFFERED=1</span>.
+              Aislamiento total en entorno virtual <span class="tag">/opt/venv</span>. Ejecución bajo usuario no-root <b>appuser (UID 1000)</b> previniendo escape de contenedor según OWASP Top 10. Configuración con variables <span class="tag">PYTHONDONTWRITEBYTECODE=1</span> y <span class="tag">PYTHONUNBUFFERED=1</span>.
             </div>
           </div>
           <div class="topic-card" style="border-left-color: #f472b6;">
             <div class="card-title">🩺 Healthchecks Nativos sin herramientas extras</div>
             <div class="card-desc">
-              Uso de librerías del lenguaje estándar (<span class="tag">urllib.request</span> en Python y <span class="tag">http.get</span> en Node), <b>sin instalar curl en la imagen final</b> reduciendo la superficie de ataque.
+              Uso de la librería estándar del lenguaje (<span class="tag">urllib.request</span> en Python) directamente en el Dockerfile: <b>evita instalar curl en la imagen final</b> reduciendo la superficie de ataque y el peso del contenedor.
             </div>
           </div>
+        </div>
+
+        <!-- VENTANA CON CÓDIGO REAL A LA DERECHA Y TABS -->
+        <div class="window-frame">
+          <div class="window-header">
+            <div class="window-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
+            <div class="window-title" id="t-s9">Dockerfile • api-clientes (Python)</div>
+          </div>
+          <div id="c-s9-code" class="code-editor-box">
+<pre><span class="cmt"># Multi-stage: Entorno virtual y dependencias</span>
+<span class="kw">FROM</span> python:3.11-slim <span class="kw">AS</span> builder
+<span class="kw">WORKDIR</span> /app
+<span class="kw">RUN</span> python -m venv /opt/venv
+<span class="kw">ENV</span> PATH=<span class="str">"/opt/venv/bin:$PATH"</span>
+<span class="kw">COPY</span> requirements.txt .
+<span class="kw">RUN</span> pip install --no-cache-dir -r requirements.txt
+
+<span class="cmt"># Runner: Contenedor final seguro sin privilegios root</span>
+<span class="kw">FROM</span> python:3.11-slim <span class="kw">AS</span> runner
+<span class="kw">WORKDIR</span> /app
+<span class="kw">ENV</span> PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+
+<span class="hl-box"><span class="cmt"># Usuario no-root (UID 1000) contra escape de contenedor</span>
+<span class="kw">RUN</span> groupadd -g 1000 appgroup &amp;&amp; \
+    useradd -u 1000 -g appgroup -s /bin/sh -m appuser</span>
+
+<span class="kw">COPY</span> --from=builder /opt/venv /opt/venv
+<span class="kw">COPY</span> --chown=appuser:appgroup . .
+<span class="kw">USER</span> appuser
+
+<span class="hl-box"><span class="cmt"># Healthcheck nativo con urllib (sin necesidad de curl)</span>
+<span class="kw">HEALTHCHECK</span> --interval=30s --timeout=5s --retries=3 \
+  CMD python -c <span class="str">"import urllib.request; urllib.request.urlopen('http://localhost:8080/health')"</span> || exit 1</span>
+
+<span class="kw">CMD</span> [<span class="str">"python"</span>, <span class="str">"main.py"</span>]</pre>
+          </div>
+          <div id="c-s9-img" class="window-content" style="display: none;" onclick="zoomImg(this)">
+            <img id="img-s9" src="./imagenes-evidencia/08_abm_clientes_network_200.png" alt="ABM Clientes">
+            <span class="zoom-tooltip">🔍 Clic para ampliar</span>
+          </div>
+          <div class="window-tabs">
+            <button class="tab-btn active" onclick="showClaudiaCode('s9', true, 'Dockerfile • api-clientes (Python)', this)">💻 Código Dockerfile</button>
+            <button class="tab-btn" onclick="showClaudiaCode('s9', false, 'api-clientes • Network 200/201 DevTools', this, './imagenes-evidencia/08_abm_clientes_network_200.png')">📸 DevTools 201</button>
+            <button class="tab-btn" onclick="showClaudiaCode('s9', false, 'Portal Web • Clientes en HTTPS', this, './imagenes-evidencia/07_frontend_web_clientes_abm.png')">🌐 Portal Web</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 10: CLAUDIA - API-PAGOS & RESILIENCIA
+         ========================================== -->
+    <section class="slide" data-slide="10">
+      <span class="speaker-chip">👤 4. CLAUDIA ALCA • NODE.JS & RESILIENCIA</span>
+      <h2 class="headline">api-pagos y Resiliencia ante Fallos Externos</h2>
+      <div class="deck-grid">
+        <div class="cards-stack">
           <div class="topic-card" style="border-left-color: #f472b6;">
             <div class="card-title">🟢 Microservicio api-pagos (Node.js 20 / Express)</div>
             <div class="card-desc">
-              Instalación limpia determinista con <span class="tag">npm ci --omit=dev --ignore-scripts</span> y ejecución bajo usuario no-root nativo <b>node (UID 1000)</b> sobre Alpine.
+              Instalación limpia determinista con <span class="tag">npm ci --omit=dev --ignore-scripts</span>. Ejecución sobre Alpine bajo usuario no-root nativo <b>node (UID 1000)</b> y comprobación de salud nativa con <span class="tag">http.get</span> sin curl.
             </div>
           </div>
           <div class="topic-card" style="border-left-color: #f472b6;">
-            <div class="card-title">🛡️ Resiliencia ante Fallos Externos</div>
+            <div class="card-title">🛡️ Resiliencia ante Fallos de la API Externa</div>
             <div class="card-desc">
-              Llamada a la API externa de tipo de cambio en bloque <span class="tag">try/catch</span>: si cae o hay timeout, se guarda en <span class="tag">db_pagos</span> con <b>monto_usd en null</b> y responde <b>201 Created</b> sin romper el ABM.
+              Llamada a la API de tipo de cambio en bloque <span class="tag">try/catch</span> con timeout de 5 segundos:<br>
+              Si el servicio externo cae, responde con error o se agota el tiempo, se guarda en <span class="tag">db_pagos</span> con <b>monto_usd en null</b> y responde con éxito <b>201 Created</b> sin romper el ABM ni frustrar al usuario.
             </div>
           </div>
         </div>
+
+        <!-- VENTANA CON CÓDIGO REAL A LA DERECHA Y TABS -->
         <div class="window-frame">
           <div class="window-header">
             <div class="window-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-            <div class="window-title" id="t-s6">api-clientes Flask • DevTools Network 200/201</div>
+            <div class="window-title" id="t-s10">exchangeRate.js • Resiliencia con Fallback</div>
           </div>
-          <div class="window-content" onclick="zoomImg(this)">
-            <img id="img-s6" src="./imagenes-evidencia/08_abm_clientes_network_200.png" alt="ABM Clientes">
+          <div id="c-s10-code" class="code-editor-box">
+<pre><span class="cmt">// exchangeRate.js • Resiliencia ante caídas de la API de cambio</span>
+<span class="kw">const</span> EXCHANGE_API_URL = <span class="str">'https://open.er-api.com/v6/latest/ARS'</span>;
+
+<span class="kw">async function</span> <span class="fn">convertirArsAUsd</span>(montoArs) {
+  <span class="kw">try</span> {
+    <span class="cmt">// Timeout estricto de 5s para no bloquear al usuario</span>
+    <span class="kw">const</span> res = <span class="kw">await</span> fetch(EXCHANGE_API_URL, { 
+      signal: AbortSignal.timeout(<span class="num">5000</span>) 
+    });
+    <span class="kw">if</span> (!res.ok) <span class="kw">throw new</span> Error(<span class="str">`Status ${res.status}`</span>);
+    <span class="kw">const</span> data = <span class="kw">await</span> res.json();
+    <span class="kw">const</span> tasaUsd = data.rates &amp;&amp; data.rates.USD;
+    <span class="kw">return</span> Number((montoArs * tasaUsd).toFixed(<span class="num">2</span>));
+  } <span class="kw">catch</span> (err) {
+<span class="hl-box">    <span class="cmt">// Si la API externa se cae, no rompemos el ABM:</span>
+    console.error(<span class="str">'API externa no disponible:'</span>, err.message);
+    <span class="kw">return null</span>; <span class="cmt">// monto_usd null -&gt; 201 Created exitoso</span></span>
+  }
+}
+
+<span class="kw">module.exports</span> = { convertirArsAUsd };</pre>
+          </div>
+          <div id="c-s10-img" class="window-content" style="display: none;" onclick="zoomImg(this)">
+            <img id="img-s10" src="./imagenes-evidencia/09_abm_pagos_node_conversion_usd_201.png" alt="Node Pagos Conversión">
             <span class="zoom-tooltip">🔍 Clic para ampliar</span>
           </div>
           <div class="window-tabs">
-            <button class="tab-btn active" onclick="setTab('s6', './imagenes-evidencia/08_abm_clientes_network_200.png', 'api-clientes Flask 200/201 en DevTools', this)">DevTools 201</button>
-            <button class="tab-btn" onclick="setTab('s6', './imagenes-evidencia/09_abm_pagos_node_conversion_usd_201.png', 'api-pagos Node.js conversión USD 59.22', this)">Node Pagos USD</button>
-            <button class="tab-btn" onclick="setTab('s6', './imagenes-evidencia/07_frontend_web_clientes_abm.png', 'Portal Web Clientes en HTTPS', this)">Portal Clientes</button>
+            <button class="tab-btn active" onclick="showClaudiaCode('s10', true, 'exchangeRate.js • Resiliencia con Fallback', this)">💻 Código try/catch</button>
+            <button class="tab-btn" onclick="showClaudiaCode('s10', false, 'api-pagos • Conversión USD 59.22 en DevTools', this, './imagenes-evidencia/09_abm_pagos_node_conversion_usd_201.png')">📸 DevTools USD 59.22</button>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ==========================================
-         SLIDE 7: DISERTANTE 5 - JULIÁN TORRES
+         SLIDE 11: JULIÁN - FACTURAS & JVM TUNING
          ========================================== -->
-    <section class="slide" data-slide="7">
-      <span class="speaker-chip">👤 5. JULIÁN TORRES</span>
-      <h2 class="headline">api-facturas, Memoria JVM, Secretos y Cierre</h2>
+    <section class="slide" data-slide="11">
+      <span class="speaker-chip">👤 5. JULIÁN TORRES • SPRING BOOT & RECURSOS</span>
+      <h2 class="headline">api-facturas y Tuning Extremo de Memoria JVM</h2>
       <div class="deck-grid">
         <div class="cards-stack">
           <div class="topic-card" style="border-left-color: #fbbf24;">
-            <div class="card-title">☕ Microservicio api-facturas (Java 21 / Spring Boot)</div>
+            <div class="card-title">☕ api-facturas (Java 21 / Spring Boot)</div>
             <div class="card-desc">
-              El servicio con mayor exigencia de hardware del stack. Requiere contención estricta de recursos en Compose: <b>384M de RAM</b> y <b>0.50 CPU</b>.
+              El servicio con mayor exigencia de hardware del ecosistema. Contención estricta en Docker Compose con límites duros fijados en <b>384M de RAM</b> y <b>0.50 CPU</b>.
             </div>
           </div>
           <div class="topic-card" style="border-left-color: #fbbf24;">
-            <div class="card-title">⚡ Optimización Extrema de Memoria JVM</div>
+            <div class="card-title">⚡ Flags JVM contra OOM Killer y Multi-Stage</div>
             <div class="card-desc">
-              Flags de tuning en el Dockerfile: <span class="tag">-Xms128m -Xmx256m -XX:+UseG1GC</span> para liberar memoria rápido y evitar que el Out-Of-Memory Killer de Linux mate los contenedores.
-            </div>
-          </div>
-          <div class="topic-card" style="border-left-color: #fbbf24;">
-            <div class="card-title">🏗️ Multi-Stage Obligatorio en Java</div>
-            <div class="card-desc">
-              Descarta Maven y el JDK completo (~850 MB); en la imagen final solo corre el <span class="tag">app.jar</span> sobre un <b>Temurin JRE Alpine</b> liviano (~180 MB).
-            </div>
-          </div>
-          <div class="topic-card" style="border-left-color: #fbbf24;">
-            <div class="card-title">🔐 Preguntas "Para Pensar" y Cierre</div>
-            <div class="card-desc">
-              • <b>Secretos fuera de Git:</b> <span class="tag">.env</span> protegidos por OWASP y transferidos vía SCP cifrado.<br>
-              • <b>Certificados en runtime:</b> Generados al bootear (evita quemar claves en Docker Hub).<br>
-              • <b>Ventajas y Mejoras:</b> Despliegue reproducible en &lt; 2 min. Próximos pasos: CI/CD con GitHub Actions + AWS ALB.
+              • Flags de contención: <span class="tag">-Xms128m -Xmx256m -XX:+UseG1GC</span> para liberar memoria rápido y evitar que el Out-Of-Memory Killer de Linux mate el contenedor.<br>
+              • <b>Multi-Stage Obligatorio:</b> Se descarta Maven y el JDK de ~850 MB; en producción solo corre el <span class="tag">app.jar</span> sobre un <b>Temurin JRE Alpine</b> de ~180 MB.
             </div>
           </div>
         </div>
         <div class="window-frame">
           <div class="window-header">
             <div class="window-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-            <div class="window-title" id="t-s7">api-facturas Spring Boot • Network 201 Created</div>
+            <div class="window-title" id="t-s11">api-facturas Spring Boot • Network 201 Created</div>
           </div>
           <div class="window-content" onclick="zoomImg(this)">
-            <img id="img-s7" src="./imagenes-evidencia/10_abm_facturas_spring_boot_network_201.png" alt="Facturas Java">
+            <img id="img-s11" src="./imagenes-evidencia/10_abm_facturas_spring_boot_network_201.png" alt="Facturas Java">
             <span class="zoom-tooltip">🔍 Clic para ampliar</span>
-          </div>
-          <div class="window-tabs">
-            <button class="tab-btn active" onclick="setTab('s7', './imagenes-evidencia/10_abm_facturas_spring_boot_network_201.png', 'api-facturas Java Spring Boot 201 Created', this)">Facturas 201</button>
-            <button class="tab-btn" onclick="setTab('s7', './imagenes-evidencia/05_deploy_ps1_smoke_tests_aprobados.png', 'Todos los Smoke Tests Aprobados (HTTP 200)', this)">Smoke Tests</button>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ==========================================
-         SLIDE 8: CIERRE Y DEMOSTRACIÓN FINAL
+         SLIDE 12: JULIÁN - SECRETOS, PREGUNTAS & CIERRE
          ========================================== -->
-    <section class="slide" data-slide="8">
+    <section class="slide" data-slide="12">
+      <span class="speaker-chip">👤 5. JULIÁN TORRES • SEGURIDAD & CIERRE</span>
+      <h2 class="headline">Gestión de Secretos y Conclusiones del Despliegue</h2>
+      <div class="deck-grid">
+        <div class="cards-stack">
+          <div class="topic-card" style="border-left-color: #fbbf24;">
+            <div class="card-title">🔐 Secretos y Certificados fuera de Git</div>
+            <div class="card-desc">
+              • Archivos <span class="tag">.env</span> excluidos en <span class="tag">.gitignore</span> según directrices de OWASP; transferidos por <b>canal cifrado SCP</b> a la instancia EC2.<br>
+              • <b>Certificados en runtime:</b> Generados al iniciar la máquina, impidiendo publicar llaves privadas en Docker Hub.
+            </div>
+          </div>
+          <div class="topic-card" style="border-left-color: #fbbf24;">
+            <div class="card-title">🎯 Reproducibilidad y Mejoras a Futuro</div>
+            <div class="card-desc">
+              • Despliegue 100% desatendido en <b>menos de 2 minutos</b> ante máquinas efímeras de AWS Academy.<br>
+              • <b>Evolución a futuro:</b> Pipeline de integración continua con <b>GitHub Actions</b> y balanceador <b>AWS ALB</b> con certificados gestionados por ACM.
+            </div>
+          </div>
+        </div>
+        <div class="window-frame">
+          <div class="window-header">
+            <div class="window-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
+            <div class="window-title" id="t-s12">deploy.ps1 • Smoke Tests Aprobados (200 OK)</div>
+          </div>
+          <div class="window-content" onclick="zoomImg(this)">
+            <img id="img-s12" src="./imagenes-evidencia/05_deploy_ps1_smoke_tests_aprobados.png" alt="Smoke Tests">
+            <span class="zoom-tooltip">🔍 Clic para ampliar</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 13: VALIDACIÓN FINAL & NÓMINA
+         ========================================== -->
+    <section class="slide" data-slide="13">
       <span class="speaker-chip">VALIDACIÓN & CONCLUSIÓN</span>
       <h2 class="headline">Smoke Tests Aprobados y Stack 100% Operativo</h2>
       <div class="deck-grid">
@@ -932,13 +1269,7 @@
           <div class="topic-card" style="border-left-color: #34d399;">
             <div class="card-title">✅ 7 de 7 Smoke Tests en HTTP 200 OK</div>
             <div class="card-desc">
-              Verificación automatizada con curl por HTTPS: Frontend, Admin Panel y las 5 APIs responden 200 OK en tiempo récord.
-            </div>
-          </div>
-          <div class="topic-card" style="border-left-color: #38bdf8;">
-            <div class="card-title">⚡ Despliegue Desatendido en &lt; 2 Minutos</div>
-            <div class="card-desc">
-              El script aprovisiona la máquina limpia en AWS Academy, configura Docker, descarga imágenes y verifica el sistema de forma 100% reproducible.
+              Verificación automatizada con curl por HTTPS: Frontend, Admin Panel y las 5 APIs responden 200 OK en tiempo récord sin errores.
             </div>
           </div>
           <div class="topic-card" style="border-left-color: #818cf8;">
@@ -951,10 +1282,10 @@
         <div class="window-frame">
           <div class="window-header">
             <div class="window-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-            <div class="window-title" id="t-s8">deploy.ps1 • Smoke Tests Aprobados y Contenedores Up</div>
+            <div class="window-title" id="t-s13">EC2 Dashboard • Instancia Operativa</div>
           </div>
           <div class="window-content" onclick="zoomImg(this)">
-            <img id="img-s8" src="./imagenes-evidencia/05_deploy_ps1_smoke_tests_aprobados.png" alt="Smoke Tests">
+            <img id="img-s13" src="./imagenes-evidencia/01_ec2_dashboard_instancia_corriendo.png" alt="EC2 Running">
             <span class="zoom-tooltip">🔍 Clic para ampliar</span>
           </div>
         </div>
@@ -963,87 +1294,162 @@
 
   </main>
 
-  <!-- Modal Lightbox -->
+  <!-- FLOATING BOTTOM DOCK: Flechitas abajo y dots interactivos -->
+  <nav class="bottom-floating-dock">
+    <button class="dock-arrow-btn" id="dockPrevBtn" title="Anterior">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <div class="dock-pills" id="dockPills"></div>
+    <button class="dock-arrow-btn" id="dockNextBtn" title="Siguiente">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+  </nav>
+
+  <!-- Modal Lightbox para Ampliar Capturas -->
   <div class="modal" id="modal" onclick="closeModal()">
     <button class="modal-close" onclick="closeModal()">&times;</button>
     <img id="modalImg" src="" alt="Captura ampliada">
   </div>
 
   <script>
-    const slides = document.querySelectorAll('.slide');
-    const totalSlides = slides.length;
     let currentSlide = 1;
+    const totalSlides = 13;
 
+    const slides = document.querySelectorAll('.slide');
     const indicator = document.getElementById('slideIndicator');
     const progressFill = document.getElementById('progressFill');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const fsBtn = document.getElementById('fsBtn');
+    const dockPills = document.getElementById('dockPills');
 
-    function goToSlide(n) {
-      if (n < 1 || n > totalSlides) return;
-      slides[currentSlide - 1].classList.remove('active');
-      currentSlide = n;
-      slides[currentSlide - 1].classList.add('active');
-
-      indicator.textContent = `SLIDE ${currentSlide} / ${totalSlides}`;
-      progressFill.style.width = `${((currentSlide - 1) / (totalSlides - 1)) * 100}%`;
-
-      prevBtn.disabled = currentSlide === 1;
-      nextBtn.disabled = currentSlide === totalSlides;
+    // Generar dots en el dock inferior
+    for (let i = 1; i <= totalSlides; i++) {
+      const dot = document.createElement('div');
+      dot.className = `dock-dot ${i === 1 ? 'active' : ''}`;
+      dot.title = `Ir al slide ${i}`;
+      dot.onclick = () => goToSlide(i);
+      dockPills.appendChild(dot);
     }
 
-    prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
-    nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+    function updateSlide() {
+      slides.forEach(s => s.classList.remove('active'));
+      const activeSlide = document.querySelector(`.slide[data-slide="${currentSlide}"]`);
+      if (activeSlide) {
+        activeSlide.classList.add('active');
+        activeSlide.scrollTop = 0;
+      }
 
+      indicator.textContent = `${String(currentSlide).padStart(2, '0')} / ${String(totalSlides).padStart(2, '0')}`;
+      progressFill.style.width = `${((currentSlide - 1) / (totalSlides - 1)) * 100}%`;
+
+      // Actualizar dots
+      const dots = document.querySelectorAll('.dock-dot');
+      dots.forEach((d, idx) => {
+        if (idx + 1 === currentSlide) d.classList.add('active');
+        else d.classList.remove('active');
+      });
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    function goToSlide(n) {
+      if (n >= 1 && n <= totalSlides) {
+        currentSlide = n;
+        updateSlide();
+      }
+    }
+
+    // Botones de flechitas superiores
+    document.getElementById('nextBtn').addEventListener('click', nextSlide);
+    document.getElementById('prevBtn').addEventListener('click', prevSlide);
+
+    // Botones de flechitas inferiores
+    document.getElementById('dockNextBtn').addEventListener('click', nextSlide);
+    document.getElementById('dockPrevBtn').addEventListener('click', prevSlide);
+
+    // Navegación por teclado
     document.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
-        goToSlide(currentSlide + 1);
+        e.preventDefault();
+        nextSlide();
       } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-        goToSlide(currentSlide - 1);
+        e.preventDefault();
+        prevSlide();
       } else if (e.key === 'Escape') {
         closeModal();
       }
     });
 
-    fsBtn.addEventListener('click', () => {
+    // Cambiar pestañas de imágenes
+    function setTab(slideId, imgSrc, title, btn) {
+      const img = document.getElementById(`img-${slideId}`);
+      const t = document.getElementById(`t-${slideId}`);
+      if (img) img.src = imgSrc;
+      if (t) t.textContent = title;
+
+      const parentTabs = btn.parentElement;
+      parentTabs.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    // Cambiar entre vista de código y captura para Claudia (Slides 9 y 10)
+    function showClaudiaCode(slideId, isCode, title, btn, imgSrc = '') {
+      const codeBox = document.getElementById(`c-${slideId}-code`);
+      const imgBox = document.getElementById(`c-${slideId}-img`);
+      const t = document.getElementById(`t-${slideId}`);
+      const img = document.getElementById(`img-${slideId}`);
+
+      if (t) t.textContent = title;
+
+      if (isCode) {
+        if (codeBox) codeBox.style.display = 'block';
+        if (imgBox) imgBox.style.display = 'none';
+      } else {
+        if (codeBox) codeBox.style.display = 'none';
+        if (imgBox) {
+          imgBox.style.display = 'flex';
+          if (img && imgSrc) img.src = imgSrc;
+        }
+      }
+
+      const parentTabs = btn.parentElement;
+      parentTabs.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    // Modal Zoom Lightbox
+    function zoomImg(el) {
+      const img = el.querySelector('img');
+      if (img) {
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modalImg');
+        modalImg.src = img.src;
+        modal.classList.add('active');
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.remove('active');
+    }
+
+    // Pantalla Completa
+    document.getElementById('fsBtn').addEventListener('click', () => {
       if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen().catch(() => {});
       } else {
         document.exitFullscreen().catch(() => {});
       }
     });
-
-    // Window Tab Switcher
-    function setTab(slideId, imgSrc, title, tabEl) {
-      const img = document.getElementById(`img-${slideId}`);
-      const t = document.getElementById(`t-${slideId}`);
-      if (img) img.src = imgSrc;
-      if (t) t.textContent = title;
-
-      const tabs = tabEl.parentElement.querySelectorAll('.tab-btn');
-      tabs.forEach(btn => btn.classList.remove('active'));
-      tabEl.classList.add('active');
-    }
-
-    // Modal Zoom
-    const modal = document.getElementById('modal');
-    const modalImg = document.getElementById('modalImg');
-
-    function zoomImg(wrapEl) {
-      const img = wrapEl.querySelector('img');
-      if (img) {
-        modalImg.src = img.src;
-        modal.classList.add('open');
-      }
-    }
-
-    function closeModal() {
-      modal.classList.remove('open');
-    }
-
-    // Init
-    goToSlide(1);
   </script>
 </body>
 </html>
