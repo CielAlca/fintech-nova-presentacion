@@ -860,10 +860,8 @@
 
     <div class="nav-actions">
       <!-- SELECTOR DE TEMAS -->
-      <button class="btn" id="themeBtn" title="Cambiar Tema de Color">
-        🎨 <span id="themeLabel">Cyberpunk</span>
-      </button>
-      <button class="btn" id="fsBtn">⛶ Pantalla Completa</button>
+      <button class="btn" id="themeBtn" title="Cambiar tema">Tema</button>
+      <button class="btn" id="fsBtn">Pantalla Completa</button>
     </div>
   </header>
 
@@ -1605,15 +1603,14 @@
 
     // GESTOR DE TEMAS
     const themes = [
-      { id: 'cyberpunk', label: 'Cyberpunk 🌌' },
-      { id: 'midnight', label: 'Midnight 🌑' },
-      { id: 'synthwave', label: 'Synthwave 🟣' },
-      { id: 'light', label: 'Light Mode ☀️' }
+      { id: 'cyberpunk', name: 'Cyberpunk' },
+      { id: 'midnight', name: 'Midnight' },
+      { id: 'synthwave', name: 'Synthwave' },
+      { id: 'light', name: 'Light' }
     ];
     let currentThemeIndex = 0;
 
     const themeBtn = document.getElementById('themeBtn');
-    const themeLabel = document.getElementById('themeLabel');
 
     // Cargar tema guardado
     const savedTheme = localStorage.getItem('fintech_deck_theme');
@@ -1627,7 +1624,7 @@
 
     function applyTheme(th) {
       document.body.setAttribute('data-theme', th.id);
-      themeLabel.textContent = th.label;
+      themeBtn.title = `Tema: ${th.name} (clic para cambiar)`;
       localStorage.setItem('fintech_deck_theme', th.id);
     }
 
